@@ -18,8 +18,9 @@ public class ExpenseTrackerTest {
         tableModel.addColumn("Amount");
         tableModel.addColumn("Category");
         tableModel.addColumn("Date");
-        view = new ExpenseTrackerView(tableModel);
         validation = new InputValidation();
+        view = new ExpenseTrackerView(tableModel, validation);
+
         app = new ExpenseTrackerApp();
     }
 

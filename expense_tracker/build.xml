@@ -30,8 +30,9 @@
     </target>
 
 <!-- Compile the project -->
-    <target name="compile" depends="init" description="Compile all sources">
-        <javac includeantruntime="true" 
+    <target  name="compile" depends="init" description="Compile all sources">
+    
+        <javac target="10" source="10" includeantruntime="true" 
                srcdir="src"
                destdir="bin"
                debug="yes">
@@ -40,8 +41,8 @@
     </target>
 
 <!-- Compile the test suite -->
-    <target name="compile.tests" depends="compile" description="Compile all tests">
-        <javac includeantruntime="true" 
+    <target  name="compile.tests" depends="compile" description="Compile all tests">
+        <javac target="10" source="10" includeantruntime="true" 
                srcdir="test"
                destdir="bin"
                debug="yes">
