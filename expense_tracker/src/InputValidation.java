@@ -1,5 +1,23 @@
 
 public class InputValidation {
+    InputValidation() {
+
+    }
+
+    private String amountError = "";
+    private String categoryError = "";
+
+    public boolean isValid() {
+        return amountError.isEmpty() && categoryError.isEmpty();
+    }
+
+    public String getAmountError() {
+        return amountError;
+    }
+
+    public String getCategoryError() {
+        return categoryError;
+    }
 
     private boolean isNumeric(String strNum) {
         if (strNum == null) {
@@ -13,7 +31,11 @@ public class InputValidation {
         return true;
     }
 
-    public String getValueError(String text) {
+    public void validateValue(String text) {
+        amountError = computeValueError(text);
+    }
+
+    private String computeValueError(String text) {
 
         if (isNumeric(text)) {
             double value = Double.parseDouble(text);
@@ -29,7 +51,11 @@ public class InputValidation {
 
     }
 
-    public String validateCategory(String text) {
+    public void validateCategory(String text) {
+        categoryError = computeCategoryError(text);
+    }
+
+    private String computeCategoryError(String text) {
         String[] categories = { "food", "travel", "bills", "entertainment", "other" };
         if (text.isEmpty()) {
             return "Please enter a category";
