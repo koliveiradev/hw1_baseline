@@ -9,6 +9,7 @@ public class ExpenseTrackerTest {
 
     private ExpenseTrackerView view;
     private ExpenseTrackerApp app;
+    private InputValidation validation;
 
     @Before
     public void setup() {
@@ -18,6 +19,7 @@ public class ExpenseTrackerTest {
         tableModel.addColumn("Category");
         tableModel.addColumn("Date");
         view = new ExpenseTrackerView(tableModel);
+        validation = new InputValidation();
         app = new ExpenseTrackerApp();
     }
 
@@ -38,5 +40,25 @@ public class ExpenseTrackerTest {
         assertEquals(1, transactions.size());
         assertEquals(amount, transactions.get(0).getAmount(), 0.001);
         assertEquals(category, transactions.get(0).getCategory());
+    }
+
+    @Test
+    public void testAmountValidation() {
+
+        String amount = "skldj";
+        validation.validateValue(amount);
+        assertEquals("Please enter a valid number", validation.getAmountError());
+        String amount2 = "10000";
+        validation.validateValue(amount2);
+        assertEquals("Number must be less than 1000", validation.getAmountError());
+    }
+
+    @Test
+    public void testCategoryValidation() {
+
+        String category = "skldj";
+        validation.validateCategory(category);
+        assertEquals("Please enter a valid category", validation.getCategoryError());
+
     }
 }

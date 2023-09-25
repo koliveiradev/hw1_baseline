@@ -139,6 +139,7 @@ public class ExpenseTrackerView extends JFrame {
   public void addTransaction(Transaction t) {
     transactions.add(t);
     getTableModel().addRow(new Object[] { t.getAmount(), t.getCategory(), t.getTimestamp() });
+
     refresh();
   }
 
